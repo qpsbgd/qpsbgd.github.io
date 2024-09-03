@@ -202,6 +202,7 @@
 						We use QP-SBGD to train binary graph convolutional neural networks. 
 						We compare the performance of QP-SBGD with BinaryConnect and ProxQuant on three datasets: 
 						Karate club, Cora and Pubmed. We report mean test accuracy over five runs.
+						Overall we observe that QP-SBGD outperforms or is on par with the baselines.
 					</p>
 				</div>
 			</center>
@@ -217,8 +218,15 @@
 					</div>
 				</div>
 					<div class="container">
-					Evolution of the QCBO formulation to calculate the weight updates for the first layer with the Quantum Projected Stochastic
-Binary-Gradient Descent algorithm.
+					<p style="text-align: justify; margin-top:10px">
+					We show the evolution of the QUBO formulation to calculate the weight 
+					updates for the first layer of a 2 layered binary neural network
+					with the Quantum Projected Stochastic Binary-Gradient Descent algorithm.
+					We display one QUBO after every 10th update. We observe here that all QUBOs 
+					have a rather densely connected support of the otherwise sparse graph. 
+					This overall sparsity of the graph enables us to embed those with minor embeddings and 
+					deploy them to the D-Wave QPU.
+					</p>
 				</div>
 			</center>
 			</section>
@@ -236,19 +244,65 @@ Binary-Gradient Descent algorithm.
 				</div>
 				</div>
 				<div class="container">
-					We train a binary neural network on the MNIST dataset with the D-Wave annealer. The left
-					figure shows digits classified as 1 and the right figure shows digits classified as 2.
+					<p style="text-align: justify; margin-top:10px">
+					We show a few qualitative results on the MINIST digits dataset. We trained the network to
+					classify the digits 1 and 2 with QP-SBGD (D-Wave).
+					Similar to the numbers reported in the paper, the accuracy on those samples is 72.5%.
+					</p>
 				</div>
+
+					<div class="container" style="text-align: justify;">
+					
+			<table>
+				<tr>
+					<th></th>
+				  <td>ProxQuant</td>
+				  <td>BC (SGD)</td>
+				  <td>BC (signSGD)</td>
+				  <th>QP-SBGD (Gurobi)</th>
+				  <th>QP-SBGD (D-Wave)</th>
+				</tr>
+				<tr>
+				  <td> 0/2</td>
+				  <td> 0.65</td>
+				  <td> 0.64</td>
+				  <th> 0.71</th>
+				  <td> <u>0.66</u></td>
+				  <td> 0.62</td>
+				</tr>
+				<tr>
+					<td> 1/2</td>
+					<td> 0.67</td>
+					<td> <u>0.72 </u></td>
+					<td> 0.66</td>
+					<th> 0.73</th>
+					<td> 0.70</td>
+				  </tr>
+				  <tr>
+					<td> 1/7</td>
+					<td> 0.64</td>
+					<td> 0.74</td>
+					<td> 0.68</td>
+					<th> <u>0.75</th>
+					<td><u> 0.74</u></td>
+				  </tr>
+				
+			  </table>
+			  <p style="text-align: justify; margin-top:10px">
+			  We present the accuracy of the binary neural network on the MNIST dataset trained with different optimisers.
+			  We train the network to do a binary classification of the digit pairs (0,2), (1,2) and (1,7).
+			  Overall the QP-SBGD algorithm outperforms or is on par with the classical baseline, while being the first quantum 
+			  deployable optimiser.
+			</p>
 			</center>
-			</section>
-
-
+		</div>
+</section>
 			<section class="wrapper">
 				<div class="container" style="text-align: justify;">
 					<h2 style="text-align:center" >Citation</h2>
 					<div class="section bibtex">
 						<pre>
-@article{krahn2023psgbd,
+@article{krahn2024qpsgbd,
 title = {Projected Stochastic Gradient Descent with Quantum Annealed Binary Gradients},
 author = {Krahn Maximilian, Sasdelli Michele, Fengyi Yang Frances, Golyanik Vladislav, Kannala Juho, Chin Tat-Jun, Birdal Tolga},
 year = {2024},
